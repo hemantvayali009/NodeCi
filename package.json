@@ -4,7 +4,9 @@
   "description": "",
   "main": "index.js",
   "jest": {
-    "setupFilesAfterEnv": ["./tests/setup.js"]
+    "setupFilesAfterEnv": [
+      "./tests/setup.js"
+    ]
   },
   "scripts": {
     "start": "node index.js",
@@ -13,19 +15,19 @@
     "dev": "concurrently \"npm run server\" \"npm run client\"",
     "build": "NPM_CONFIG_PRODUCTION=false npm install --prefix client && npm run build --prefix client",
     "heroku-postbuild": "npm run build",
-    "test": "jest --detectOpenHandles"
+    "test": "jest --detectOpenHandles --forceExit"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "aws-sdk": "^2.188.0",
+    "aws-sdk": "^2.687.0",
     "body-parser": "^1.17.2",
     "concurrently": "^3.5.0",
     "cookie-session": "^2.0.0-beta.2",
     "express": "^4.15.3",
     "jest": "^26.0.1",
     "migrate-mongoose": "^4.0.0",
-    "mongoose": "^5.9.12",
+    "mongoose": "^5.9.16",
     "nodemon": "^1.11.0",
     "passport": "^0.3.2",
     "passport-google-oauth20": "^2.0.0",

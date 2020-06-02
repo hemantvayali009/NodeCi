@@ -10,30 +10,30 @@ afterEach(async () => {
   await page.close();
 });
 
-describe('when logged in', async () => {
+describe('when logged in', () => {
   beforeEach(async () => {
     await page.login();
     await page.click('a.btn-floating');
   });
 
-  test('can see blog create form', async () => {
+  it('can see blog create form', async () => {
     const label = await page.$eval("form label", el => el.innerHTML);
     expect(label).toEqual('Blog Title');
   });
 
-  describe('and using valid inputs', async () => {
+  describe('and using valid inputs', () => {
     beforeEach(async () => {
       await page.type('.title input', 'Test Title');
       await page.type('.content input', 'Test Content');
       await page.click('form button');
     });
 
-    test('submitting takes user to review screen', async () => {
+    it('submitting takes user to review screen', async () => {
       const headingText = await page.getContentOf('h5');
       expect(headingText).toEqual('Please confirm your entries');
     });
 
-    test('submitting then takes the user to the index page', async () => {
+    it('submitting then takes the user to the index page', async () => {
       await page.click('button.green');
       await page.waitFor('.card');
 
@@ -45,12 +45,12 @@ describe('when logged in', async () => {
     });
   });
 
-  describe('and using invalid inputs', async () => {
+  describe('and using invalid inputs', () => {
     beforeEach(async () => {
       await page.click('form button');
     });
 
-    test('the form shows error message', async () => {
+    it('the form shows error message', async () => {
       const titleError = await page.getContentOf('.title .red-text');
       const contentError = await page.getContentOf('.content .red-text');
 
